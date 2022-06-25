@@ -17,18 +17,11 @@ firebase.initializeApp({
   measurementId: "G-BZM5FY4XGT"
 })
 
+const auth = firebase.auth();
+const firestore = firebase.firestore();
+
 function App() {
-
-  const[color,setColor] = useState("red")
-
-  return (
-    <div className = "Cuvette">
-      <h1>My favourite colour is {color}</h1>
-
-      <button type = "button"onClick = {() => setColor("blue")}>BLUE</button>
-      <button type = "button"onClick = {() => setColor("red")}>RED</button>
-    </div>
-  );
+  
 }
 
 export default App;
