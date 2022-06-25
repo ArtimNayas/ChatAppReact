@@ -21,7 +21,23 @@ const auth = firebase.auth();
 const firestore = firebase.firestore();
 
 function App() {
-  
+  return (
+    <div className='App'>
+      <header>
+      <h1>This is a Chat Service.</h1>
+      <SignIn />
+      </header>
+    </div>
+
+  );
+}
+
+function SignIn(){
+
+}
+
+function SignOut(){
+
 }
 
 export default App;
