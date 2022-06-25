@@ -24,8 +24,8 @@ function App() {
   return (
     <div className='App'>
       <header>
-      <h1>This is a Chat Service.</h1>
-      <SignIn />
+        <h1>This is a Chat Service</h1>
+        <SignOut />
       </header>
     </div>
 
