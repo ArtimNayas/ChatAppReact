@@ -1,9 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import React,{useState, useRef} from "react";
+import React,{useState,useRef} from "react";
 import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth'
-import 'firebase/compat/auth'
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore'; 
+import {useAuthState} from 'react-firebase-hooks/auth';
+
 
 
 firebase.initializeApp({
@@ -21,12 +22,20 @@ const auth = firebase.auth();
 const firestore = firebase.firestore();
 
 function App() {
+
+  const[user] = useAuthState(auth);
+
   return (
     <div className='App'>
       <header>
         <h1>This is a Chat Service</h1>
         <SignOut />
       </header>
+
+      <section>
+        {user ? <Chatroom /> : <SignIn />}
+      </section>
+
     </div>
 
   );
@@ -34,9 +43,28 @@ function App() {
 
 function SignIn(){
 
+  const signInWithGoogle = () =>{
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
+  }
+
+  return(
+    <>
+      <button className="sign-in" onClick = {signInWithGoogle}>Sign In With Google</button>
+    </>
+  )
+
 }
 
 function SignOut(){
+
+  return auth.currentUser && (
+    <button className='sign-out' onClick={() => auth.signOut()}>Sign Out</button>
+  )
+
+}
+
+function Chatroom(){
 
 }
 
